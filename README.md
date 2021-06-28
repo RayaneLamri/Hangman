@@ -1,0 +1,2 @@
+# Hangman
+A javascript challenge.
