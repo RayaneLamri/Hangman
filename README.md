@@ -11,7 +11,7 @@ Created at [BeCode](https://becode.org/fr/).
 
 - [LAMRI Rayane](https://github.com/RayaneLamri)
 
-## Languages & Frameworks
+## Tech
 
 - HTML
 - CSS
