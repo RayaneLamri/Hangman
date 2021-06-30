@@ -3,7 +3,7 @@
 ## The Challenge
 
 Create a hangman game using Vanilla Javascript. <br>
-Created at [BeCode](https://github.com/becodeorg){:target="\_blank" rel="noopener"}.
+Created at [BeCode](https://github.com/becodeorg){:target="\_blank"}.
 
 [**Instructions**](https://github.com/becodeorg/CRL-Keller-3.31/blob/master/LearningPath/02.The-Hill/08.Javascript/challenges/hangman.md){:target="\_blank" rel="noopener"}
 
