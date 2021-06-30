@@ -38,22 +38,24 @@ a {
   color: inherit;
   transition: all 0.2s;
   width: 1.3em;
-  text-align: center;
+  text-align: center; }
+
+h1,
+a,
+#newGame {
   background-color: #ffffff; }
 
 a:hover {
   border-color: orange;
   color: orange; }
 
-button {
+#newGame {
   width: 6em;
   height: 1.5em;
-  background-color: inherit;
   font-size: 2em;
   border-radius: 0.2em;
   padding: 0.1em;
-  outline: none;
-  background-color: #ffffff; }
+  outline: none; }
 
 .visible {
   visibility: visible; }

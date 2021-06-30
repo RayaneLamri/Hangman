@@ -1,9 +1,8 @@
-// DECLARE & ASIGN-----------------------------------------------------------------------------
-
 //Where the random word is displayed asigned
 const target = document.getElementById("target");
 
 //Lives and the collection of responses in the form of letters and booleans and good responses init
+let word;
 let lives = 10;
 let res = [];
 let tries = [];
@@ -14,51 +13,35 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 ctx.lineWidth = 7;
 
-// Keypad generator-----------------------------------------------------------------------------
-
-Array.from({length:26}, (_, i) => String.fromCharCode(65 + i)).map(
-  (k,i) => ["<a href='#' style='grid-area:span" + i + "'>" + k + "</a>"]).map(
-  item => document.querySelector("#container").innerHTML += item.join(""));
-
 //-----------------------------------------------------------------------------
 
-// document.getElementById("screen").addEventListener("click", (e) => {
-//   document.getElementById("container").classList.toggle("visible");
-//   e.target.parentElement.style.display = "none";
-// })
-
-
+//At almost each step it asks itself 'it the end?', because of a mistake or a victory or simply because you waste all you chances...
 const isEndGame = (word, arr) => {
-  console.log(arr);
   Array.from(document.getElementsByTagName("a")).filter(item => item.textContent == res.slice(-1)[0]).map(item => item.style.backgroundColor = tries.slice(-1)[0] == true ? "#1B998B" : "#FF1654"); 
-  console.log(arr);  
   if(lives == 0 || guesses.length == word.length){endGame(word, arr)};
-  console.log(arr);
 }
 
+//end game handler
 const endGame = (word, arr) => {
-   //Array.from(document.getElementById("target").innerText).filter(item => item != " ").join("") == word ? alert("YOU WIN") : alert("YOU'VE LOST");
+   guesses.length == word.length ? console.log("YOU WIN!") : alert("You've lost! It was: " + word.join(""));
    clear(word, arr);   
  }
 
+//Add one counter and go to the next step, is a good or a bad call
  const newInput = (word, arr, input) => {
    tries.push(word.indexOf(input) != -1);
-   console.log(tries);
    isEndGame(word, arr);
    tries.slice(-1)[0] == true ? good(word, arr, input) : draw(word, arr, input);
  }
 
+//Good awsers handler
  const good = (word, arr, guess) => {
-   //picture("lion");
-   console.log(arr);
    arr = arr.map((element,i) => element = word[i] == guess ? returnMap(guess) : element);
-   console.log(arr);
-   document.getElementById("target").innerText = arr.join(" ");
-   console.log(arr);
+   target.innerText = arr.join(" ");
    isEndGame(word, arr);
-   console.log(arr);
  }
 
+//Push the good anwser in an array
  const returnMap = (letter) => {
    guesses.push(letter);
    return letter;
@@ -67,8 +50,7 @@ const endGame = (word, arr) => {
  // Canevas handler-----------------------------------------------------------------------------
 
 const draw = (word, arr) => {
-  //picture("cat");
-  lives--;
+  --lives;
   switch (10-lives) {
     case 1:
       ctx.beginPath();
@@ -133,58 +115,57 @@ const draw = (word, arr) => {
   isEndGame(word, arr);
 }
 
+ // Clean everything and restart the game-----------------------------------------------------------------------------
+
  const clear = (word, arr) => {
    arr = Array.from({length: word.length}, element => element = "_");
-   document.getElementById ("target").innerText = arr.join(" ");
+   document.getElementById("target").innerText = Array.from({length: word.length}, element => element = "_").join(" ");
    Array.from(document.getElementsByTagName("a")).map(item => item.style.backgroundColor = "");
    guesses = [];
    tries = [];
    lives = 10;
    res = [];
-   //ctx.clearRect(0, 0, canvas.width, canvas.height);
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   debut();
 }
 
+// API for random words-----------------------------------------------------------------------------
 
-fetch("https://random-word-form.herokuapp.com/random/animal").then((response) => response.json()).then((data) => {
+const debut = () => fetch("https://random-word-form.herokuapp.com/random/animal").then((response) => response.json()).then((data) => {
   
-  let word = Array.from(data[0].toUpperCase());
-    let arr = Array.from({length: word.length}, element => element = "_");
-    target.innerText = arr.join(" ");
-    console.log(arr);
+  word = Array.from(data[0].toUpperCase());
+  let arr = Array.from({length: word.length}, element => element = "_");
+  target.innerText = arr.join(" ");
+  
+  
+  // UNCOMMENT FOR DEV console.log(word);
 
-// EVENT-----------------------------------------------------------------------------
+
+
+// Keypad event-----------------------------------------------------------------------------
+
+/*Each time you press a key on your pad, it checks if: 
+    - one, does the key exist in the keyboard displayed and ;
+    - two, if it does it sends the letter to the next method to threat the input.  */
 
  document.body.addEventListener("keyup", (e) => {
-   console.log(arr);
    Array.from(document.getElementsByTagName("a")).forEach(item => {
      if(e.key.toUpperCase() == item.innerText && res.indexOf(item.innerText) == -1){
        res.push(item.innerText);
-       newInput(word, arr, item.innerText);
+       newInput(word, Array.from(Array.from(target.innerText).filter(element => element != " ")), item.innerText);
       }
     })
   })
 
  document.getElementById("newGame").addEventListener("click", clear);
 
+ });
 
-    /*const picture = (animal) => {
-   let requestUrl = "https://api.unsplash.com/search/photos?query=" + animal + "&fit=facearea&client_id=RTBdnYQXZLWgJdiIu1jSRaitf4HMVeVqTiUrplwOOzc";
-    async () => {
-      let randomImage = await getNewImage();
-      document.querySelector('main').style.backgroundImage = "url('" + randomImage + "')" ;
-      console.log(document.querySelector('main').style.backgroundImage);
-    };
+//Page loaded? Let's start the game!
+ (debut());
 
-    async function getNewImage() {
-      let randomNumber = Math.floor(Math.random() * 10);
-      return fetch(requestUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          let allImages = data.results[randomNumber];
-          return allImages.urls.thumb;
-        });
-    }
-    }*/ 
+ // Keypad generator-----------------------------------------------------------------------------
 
-
- })
+Array.from({length:26}, (_, i) => String.fromCharCode(65 + i)).map(
+  (k,i) => ["<a href='#' style='grid-area:span" + i + "'>" + k + "</a>"]).map(
+  item => document.querySelector("#container").innerHTML += item.join(""));
