@@ -23,7 +23,7 @@ const isEndGame = (word, arr) => {
 
 //end game handler
 const endGame = (word, arr) => {
-   guesses.length == word.length ? console.log("YOU WIN!") : alert("You've lost! It was: " + word.join(""));
+   guesses.length == word.length ? alert("YOU WIN!") : alert("You've lost! It was: " + word.join(""));
    clear(word, arr);   
  }
 
@@ -132,9 +132,9 @@ const draw = (word, arr) => {
 // API for random words-----------------------------------------------------------------------------
 
 const debut = () => fetch("https://random-word-form.herokuapp.com/random/animal").then((response) => response.json()).then((data) => {
-  
+  console.log(data[0].toUpperCase())
   word = Array.from(data[0].toUpperCase());
-  let arr = Array.from({length: word.length}, element => element = "_");
+  let arr = Array.from({length: word.length}, (element, i) => element = word[i] != " " || "-" ? "_" : word[i] == "-" ? "-" : " ");
   target.innerText = arr.join(" ");
   
   
@@ -145,8 +145,8 @@ const debut = () => fetch("https://random-word-form.herokuapp.com/random/animal"
 // Keypad event-----------------------------------------------------------------------------
 
 /*Each time you press a key on your pad, it checks if: 
-    - one, does the key exist in the keyboard displayed and ;
-    - two, if it does it sends the letter to the next method to threat the input.  */
+    - one, does the key exists on the displayed keyboard;
+    - two, if it does it sends the key to the next method to process.  */
 
  document.body.addEventListener("keyup", (e) => {
    Array.from(document.getElementsByTagName("a")).forEach(item => {
