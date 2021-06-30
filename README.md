@@ -18,6 +18,10 @@ Created at [BeCode](https://github.com/becodeorg).
 - SASS
 - JavaScript Vanilla
 
+## Tech
+
+Optionally check
+
 ### API Used
 
 - [random-word](https://random-word-form.herokuapp.com/)
