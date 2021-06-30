@@ -1,11 +1,11 @@
 # Hangman in Vanilla JS
 
-## The Project
+## The Challenge
 
 Create a hangman game using Vanilla Javascript. <br>
 Created at [BeCode](https://becode.org/fr/).
 
-[**Instructions**](https://github.com/becodeorg/CRL-Keller-3.31/blob/master/LearningPath/01.The-Field/07.Bootstrap/restaurant.md)
+[**Instructions**](https://github.com/becodeorg/CRL-Keller-3.31/blob/master/LearningPath/02.The-Hill/08.Javascript/challenges/hangman.md)
 
 ## Dev
 
@@ -26,4 +26,4 @@ Created at [BeCode](https://becode.org/fr/).
 
 ### v.1.0.0
 
-- [Inital release]()
+- [Inital release](https://rayanelamri.github.io/Hangman/)
