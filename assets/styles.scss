@@ -49,6 +49,11 @@ a {
   transition: all 0.2s;
   width: 1.3em;
   text-align: center;
+}
+
+h1,
+a,
+#newGame {
   background-color: #ffffff;
 }
 
@@ -57,15 +62,13 @@ a:hover {
   color: orange;
 }
 
-button {
+#newGame {
   width: 6em;
   height: 1.5em;
-  background-color: inherit;
   font-size: 2em;
   border-radius: 0.2em;
   padding: 0.1em;
   outline: none;
-  background-color: #ffffff;
 }
 
 .visible {

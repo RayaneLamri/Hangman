@@ -3,13 +3,13 @@
 ## The Challenge
 
 Create a hangman game using Vanilla Javascript. <br>
-Created at [BeCode](https://becode.org/fr/).
+Created at [BeCode](https://github.com/becodeorg){:target="\_blank" rel="noopener"}.
 
-[**Instructions**](https://github.com/becodeorg/CRL-Keller-3.31/blob/master/LearningPath/02.The-Hill/08.Javascript/challenges/hangman.md)
+[**Instructions**](https://github.com/becodeorg/CRL-Keller-3.31/blob/master/LearningPath/02.The-Hill/08.Javascript/challenges/hangman.md){:target="\_blank" rel="noopener"}
 
 ## Dev
 
-- [LAMRI Rayane](https://github.com/RayaneLamri)
+- [LAMRI Rayane](https://github.com/RayaneLamri){:target="\_blank" rel="noopener"}
 
 ## Tech
 
@@ -20,10 +20,10 @@ Created at [BeCode](https://becode.org/fr/).
 
 ### API Used
 
-- [random-word](https://random-word-form.herokuapp.com/)
+- [random-word](https://random-word-form.herokuapp.com/){:target="\_blank" rel="noopener"}
 
 ## Changelog
 
 ### v.1.0.0
 
-- [Inital release](https://rayanelamri.github.io/Hangman/)
+- [Inital release](https://rayanelamri.github.io/Hangman/){:target="\_blank" rel="noopener"}
