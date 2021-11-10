@@ -22,7 +22,7 @@ Created at [BeCode](https://github.com/becodeorg).
 
 - [random-word](https://random-word-form.herokuapp.com/)
 
-## Changelog
+## Deployment
 
 ### v.1.0.0
 
